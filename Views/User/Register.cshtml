@@ -1,0 +1,170 @@
+﻿@model ecommercestore.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<h1>Register</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" required />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" required />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" type="password" class="form-control" required />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="address" class="control-label"></label>
+                <input asp-for="address" class="form-control"  required />
+                <span asp-validation-for="address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="position" class="control-label"></label>
+                <select asp-for="position" class="form-control" required>
+                    <option value="">Select Position</option> 
+                    <option value="Customer">Customer</option>
+                    <option value="Admin">Admin</option>
+                </select>
+                <span asp-validation-for="position" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="form-group">
+                <input type="submit" value="Register" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Login">Already have an account? Login</a>
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+  
+    body {
+        background: linear-gradient(to right, #f8e2cf, #fbead6); 
+        font-family: 'Playfair Display', serif; 
+        margin: 0;
+        padding: 0;
+    }
+
+    .register-container {
+        max-width: 600px;
+        width: 90%;
+        margin: 50px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border: 2px solid #e6c4a8; /* Subtle gold border */
+    }
+
+        /* Title Styling */
+        .register-container h1, .register-container h4 {
+            color: #4a3f35;
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    /* Input Fields */
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .control-label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #4a3f35;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e6c4a8;
+        border-radius: 8px;
+        font-size: 16px;
+        background: #fff8f3;
+    }
+
+        /* Select Dropdown */
+        .form-control select {
+            appearance: none;
+            background: url('data:image/svg+xml;utf8,<svg fill="%234a3f35" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"/></svg>') no-repeat right 10px center;
+            background-size: 14px;
+        }
+
+    /* Validation Messages */
+    .text-danger {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        display: block;
+        width: 100%;
+        background: linear-gradient(90deg, #b38761, #d8a076);
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #9d6e50, #b38761);
+        }
+
+    /* Login Link */
+    a {
+        display: block;
+        text-align: center;
+        font-size: 16px;
+        color: #4a3f35;
+        margin-top: 15px;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        a:hover {
+            color: #9d6e50;
+        }
+
+</style>
+

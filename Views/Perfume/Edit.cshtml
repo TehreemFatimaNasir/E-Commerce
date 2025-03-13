@@ -1,0 +1,144 @@
+﻿@model ecommercestore.Models.Perfume
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Perfume</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="Id" />
+
+            <div class="form-group">
+                <label asp-for="name" class="control-label"></label>
+                <input asp-for="name" class="form-control" required />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="brand" class="control-label"></label>
+                <input asp-for="brand" class="form-control" required />
+                <span asp-validation-for="brand" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="price" class="control-label"></label>
+                <input asp-for="price" type="number" step="0.01" class="form-control" required />
+                <span asp-validation-for="price" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="notes" class="control-label"></label>
+                <input asp-for="notes" class="form-control" required />
+                <span asp-validation-for="notes" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="imageurl" class="control-label"></label>
+                <input asp-for="imageurl" class="form-control" required />
+                <span asp-validation-for="imageurl" class="text-danger"></span>
+            </div>
+
+           
+
+            <div class="form-group">
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+                <a href="@Url.Action("Index", "Perfume")" class="btn btn-secondary">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .edit-container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #b38761;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        color: #5a5a5a;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #d8a076;
+        border-radius: 5px;
+        font-size: 14px;
+        transition: 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #b38761;
+            outline: none;
+            box-shadow: 0 0 5px rgba(179, 135, 97, 0.5);
+        }
+
+    .text-danger {
+        font-size: 12px;
+        color: #e74c3c;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: #d8a076;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background: #b38761;
+        }
+
+    .btn-secondary {
+        background: #5a5a5a;
+        color: white;
+        margin-left: 10px;
+    }
+
+        .btn-secondary:hover {
+            background: #3e3e3e;
+        }
+</style>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

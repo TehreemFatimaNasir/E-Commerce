@@ -1,0 +1,151 @@
+﻿@model IEnumerable<ecommercestore.Models.Cart>
+
+
+@{
+    ViewData["Title"] = "Shopping Cart";
+}
+
+
+
+<div class="cart-container">
+    <h2 style="text-align: center; color: #e6c4a8;">Your Perfume Cart</h2>
+
+    @if (!Model.Any())
+    {
+        <p style="text-align: center;">Your cart is empty.</p>
+    }
+    else
+    {
+        <table class="cart-table">
+            <tr>
+                <th>Perfume Name</th>
+                <th>Quantity</th>
+               
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                 
+                    <td>@item.quantity</td>
+
+                    <td>@item. price</td> 
+
+                    <td>
+                        <a href="@Url.Action("Remove", "Cart", new { id = item.Id })" class="remove-btn">Remove</a>
+                    </td>
+                </tr>
+            }
+        </table>
+        <div class="cart-total">
+            Total: Rs @Model.Sum(i => i.quantity * i.quantity)
+        </div>
+
+
+
+        <a href="@Url.Action("Checkout", "Cart")" class="checkout-btn">Proceed to Checkout</a>
+    }
+</div>
+<style>
+    body {
+        background: linear-gradient(to right, #f8e2cf, #fbead6);
+        font-family: 'Playfair Display', serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cart-container {
+        max-width: 650px;
+        width: 90%;
+        margin: 50px auto;
+        background: white;
+        padding: 25px;
+        border-radius: 12px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+        text-align: center;
+        border: 2px solid #e6c4a8;
+    }
+
+    .cart-title {
+        color: #4a3f35;
+        font-size: 26px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        .cart-table th {
+            background: linear-gradient(90deg, #b38761, #d8a076);
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-size: 18px;
+            border-radius: 6px 6px 0 0;
+        }
+
+        .cart-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 18px;
+            color: #4a3f35;
+        }
+
+        .cart-table tbody tr:hover {
+            background-color: #fff8f3;
+            transition: 0.3s;
+        }
+
+    .cart-total {
+        font-size: 22px;
+        font-weight: bold;
+        color: #9d6e50;
+        margin: 20px 0;
+        padding: 12px;
+        background: #f7e0c9;
+        border-radius: 8px;
+        display: inline-block;
+    }
+
+    .checkout-btn {
+        display: inline-block;
+        width: 80%;
+        max-width: 300px;
+        background: linear-gradient(90deg, #b38761, #d8a076);
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .checkout-btn:hover {
+            background: linear-gradient(90deg, #9d6e50, #b38761);
+        }
+
+    .remove-btn {
+        color: #b38761;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+        .remove-btn:hover {
+            color: #9d6e50;
+            text-decoration: underline;
+        }
+</style>

@@ -1,0 +1,142 @@
+﻿@model ecommercestore.Models.Perfume
+
+
+@{
+    ViewData["Title"] = "Perfume Details";
+}
+
+<h1>Perfume Details</h1>
+
+<<div class="row">
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-sm-4"><strong>Name:</strong></div>
+            <div class="col-sm-8">@Model.name</div>
+
+            <div class="col-sm-4"><strong>Brand:</strong></div>
+            <div class="col-sm-8">@Model.brand</div>
+
+            <div class="col-sm-4"><strong>Price:</strong></div>
+            <div class="col-sm-8">Rs @Model.price</div>
+
+            <div class="col-sm-4"><strong>Notes:</strong></div>
+            <div class="col-sm-8">@Model.notes</div>
+
+            <div class="col-sm-4"><strong>Category:</strong></div>
+            <div class="col-sm-8">@Model.categoryname</div>
+
+            <div class="col-sm-4"><strong>Image:</strong></div>
+            <div class="col-sm-8">
+                <img src="~/images/@Model.imageurl" alt="Perfume Image" class="img-fluid" style="max-width: 200px;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Edit</a>
+    <a asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+</div>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .details-container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #b38761;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .row {
+        margin-bottom: 15px;
+    }
+
+    dt {
+        font-weight: bold;
+        color: #5a5a5a;
+    }
+
+    dd {
+        color: #333;
+    }
+
+    img {
+        display: block;
+        margin-top: 10px;
+        border-radius: 10px;
+        border: 1px solid #d8a076;
+        padding: 5px;
+        background: #fff;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: #d8a076;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+        .btn-primary:hover {
+            background: #b38761;
+        }
+
+    .btn-secondary {
+        background: #5a5a5a;
+        color: white;
+        margin-left: 10px;
+    }
+
+        .btn-secondary:hover {
+            background: #3e3e3e;
+        }
+
+    .btn-danger {
+        background: #e74c3c;
+        color: white;
+        margin-left: 10px;
+    }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+    .btn-group {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

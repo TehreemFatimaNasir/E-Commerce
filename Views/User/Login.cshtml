@@ -1,0 +1,125 @@
+﻿@model ecommercestore.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h1>Login</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-controller="User" asp-action="processLogin" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="email" class="control-label"></label>
+                <input asp-for="email" class="form-control" />
+                <span asp-validation-for="email" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="password" class="control-label"></label>
+                <input asp-for="password" type="password" class="form-control" />
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Login" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<style>
+ 
+    body {
+        background: linear-gradient(to right, #f8e2cf, #fbead6); 
+        font-family: 'Playfair Display', serif; 
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Container */
+    .login-container {
+        max-width: 500px;
+        width: 90%;
+        margin: 50px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border: 2px solid #e6c4a8; /* Subtle gold border */
+    }
+
+        /* Title Styling */
+        .login-container h1, .login-container h4 {
+            color: #4a3f35;
+            font-size: 26px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+    /* Input Fields */
+    .form-group {
+        margin-bottom: 15px;
+        text-align: left;
+    }
+
+    .control-label {
+        font-size: 18px;
+        font-weight: bold;
+        color: #4a3f35;
+        margin-bottom: 6px;
+        display: block;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #e6c4a8;
+        border-radius: 8px;
+        font-size: 16px;
+        background: #fff8f3;
+    }
+
+    /* Validation Messages */
+    .text-danger {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    /* Button Styling */
+    .btn-primary {
+        display: block;
+        width: 100%;
+        background: linear-gradient(90deg, #b38761, #d8a076);
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #9d6e50, #b38761);
+        }
+
+</style>
+
+

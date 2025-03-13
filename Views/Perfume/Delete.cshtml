@@ -1,0 +1,19 @@
+﻿@model ecommercestore.Models.Perfume
+
+@{
+    ViewData["Title"] = "Delete Perfume";
+}
+
+<h2>Delete Perfume</h2>
+<p>Are you sure you want to delete <strong>@Model.name</strong>?</p>
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="Id" />
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="@Url.Action("Index", "Perfume")" class="btn btn-secondary">Cancel</a>
+</form>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

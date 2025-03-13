@@ -1,0 +1,163 @@
+﻿@model IEnumerable<ecommercestore.Models.Cart>
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<div class="checkout-container">
+    <h2 class="checkout-title">Checkout</h2>
+
+    <table class="checkout-table">
+        <thead>
+            <tr>
+                <th>Perfume</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.CartItems != null)
+            {
+                foreach (var item in ViewBag.CartItems)
+                {
+                    <tr>
+                        <td>@item.PerfumeName</td>
+                        <td>@item.quantity</td>
+                        <td>@(item.PerfumePrice * item.quantity)</td>
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="3">No items in cart</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <h3>Payment Method</h3>
+    <label>
+        <input type="radio" name="paymentMethod" value="COD" checked readonly> Cash on Delivery (COD) Only
+    </label>
+
+    <form action="/Order/PlaceOrder" method="post">
+        <input type="hidden" name="paymentMethod" value="COD" />
+        <button type="submit" class="checkout-btn">Place Order</button>
+    </form>
+</div>
+
+
+<style>
+
+    body {
+        background: linear-gradient(to right, #f8e2cf, #fbead6);
+        font-family: 'Playfair Display', serif;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Checkout Container */
+    .checkout-container {
+        max-width: 700px;
+        width: 90%;
+        margin: 50px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        border: 2px solid #e6c4a8;
+    }
+
+    /* Checkout Title */
+    .checkout-title {
+        color: #4a3f35;
+        font-size: 28px;
+        font-weight: bold;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+
+    .checkout-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 20px;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+        .checkout-table th {
+            background: linear-gradient(90deg, #b38761, #d8a076);
+            color: white;
+            padding: 14px;
+            text-align: left;
+            font-size: 18px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .checkout-table td {
+            padding: 14px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+            font-size: 18px;
+            color: #4a3f35;
+        }
+
+
+        .checkout-table tbody tr:hover {
+            background: #fff8f3;
+            transition: 0.3s;
+        }
+
+    .checkout-total {
+        font-size: 24px;
+        font-weight: bold;
+        color: #9d6e50;
+        margin: 20px 0;
+    }
+
+
+    .quantity-input {
+        width: 60px;
+        padding: 8px;
+        text-align: center;
+        border: 2px solid #e6c4a8;
+        border-radius: 8px;
+        background: #fff8f3;
+        font-weight: bold;
+    }
+
+
+    .payment-method {
+        font-size: 18px;
+        font-weight: bold;
+        margin: 20px 0;
+        color: #4a3f35;
+    }
+
+
+    .checkout-btn {
+        display: inline-block;
+        width: 80%;
+        max-width: 320px;
+        background: linear-gradient(90deg, #b38761, #d8a076);
+        color: white;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        .checkout-btn:hover {
+            background: linear-gradient(90deg, #9d6e50, #b38761);
+        }
+
+</style>

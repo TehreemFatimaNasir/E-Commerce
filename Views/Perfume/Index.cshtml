@@ -1,0 +1,134 @@
+﻿@model IEnumerable<ecommercestore.Models.Perfume>
+@{
+    ViewData["Title"] = "Perfume List";
+}
+<h1>Perfume List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Brand</th>
+            <th>Price</th>
+            <th>Actions</th> 
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.name</td>
+                <td>@item.brand</td>
+                <td>@item.price</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary">Edit</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Details</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .admin-container {
+        max-width: 900px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        color: #b38761;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .create-btn {
+        display: inline-block;
+        background: #d8a076;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+    }
+
+        .create-btn:hover {
+            background: #b38761;
+        }
+
+    .table {
+        width: 100%;
+        margin-top: 15px;
+        border-collapse: collapse;
+    }
+
+        .table th, .table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .table th {
+            background: #b38761;
+            color: white;
+            font-size: 16px;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1e1d3;
+        }
+
+    .btn {
+        padding: 8px 12px;
+        border-radius: 5px;
+        font-size: 14px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: 0.3s;
+        display: inline-block;
+        text-align: center;
+    }
+
+    .btn-primary {
+        background: #d8a076;
+        color: white;
+    }
+
+        .btn-primary:hover {
+            background: #b38761;
+        }
+
+    .btn-info {
+        background: #5a5a5a;
+        color: white;
+    }
+
+        .btn-info:hover {
+            background: #3e3e3e;
+        }
+
+    .btn-danger {
+        background: #e74c3c;
+        color: white;
+    }
+
+        .btn-danger:hover {
+            background: #c0392b;
+        }
+
+</style>
